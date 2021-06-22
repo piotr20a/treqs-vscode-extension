@@ -42,7 +42,7 @@
 			}
 		],
 		"menus": {
-			"editor/context": [
+			"explorer/context": [
 			  {
 				"when": "resourceScheme == file",
 				"command": "treqs.testCommand",
