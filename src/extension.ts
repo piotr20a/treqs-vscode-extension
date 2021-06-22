@@ -1,7 +1,6 @@
 
 import * as vscode from 'vscode';
 import cp = require('child_process');
-let {pythonShell} = require('python-shell');
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -9,26 +8,30 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(vscode.commands.registerCommand('treqs.helloWorld', () => {
 		vscode.window.showInformationMessage('Hello World from treqs!');
-		pythonShell.runString('x=1+1;print(x)', null, function (err: any) {
-			if (err) {
-			console.log(err);
-			console.log('finished');
-		}
-		});
+
+	}));
+	context.subscriptions.push(vscode.commands.registerCommand('treqs.testCommand', () => {
+		vscode.window.showInformationMessage('Hello World from treqs!');
 
 	}));
 
-	context.subscriptions.push(vscode.commands.registerCommand('treqs.treqsList', () => {
-		cp.exec('treqs list extension.ts', (err, stdout, stderr) => {
+	context.subscriptions.push(vscode.commands.registerCommand('treqs.testCommand', () => {
+		cp.exec('pwd', (err, stdout, stderr) => {
 			console.log('stdout: ' + stdout);
 			console.log('stderr: ' + stderr);
 			if (err) {
 				console.log('error: ' + err);
-			
+
 			}
 		});
 	}));
+
+	// context.subscriptions.push(vscode.commands.registerCommand('treqs.addOption', () => this.addOption()));
+
+	// addOption() {
+
+	// }
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
