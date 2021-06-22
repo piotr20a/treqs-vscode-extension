@@ -1,0 +1,14 @@
+{
+    "treqs element template": {
+        "prefix": "!tele",
+        "body" : [
+            "<treqs-element id=\"ID\" type=\"requirement\">",
+            "$0",
+            "Description:",
+            "${1:add additional information/details here}",
+            "</treqs-element>"
+        ],
+        "description":
+        "Create a treqs element template."
+    }
+}
