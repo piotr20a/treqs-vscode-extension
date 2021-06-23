@@ -50,7 +50,7 @@
 	},
 	"scripts": {
 		"python": "npm install python-shell",
-		"python-treqs": "pip install -e ..\\..\\..\\Desktop\\treqs-ng\\",
+		"python-treqs": "python pip install -e ..\\..\\..\\Desktop\\treqs\\",
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
@@ -73,7 +73,6 @@
 	},
 	"dependencies": {
 		"child_process": "^1.0.2",
-		"python-shell": "^3.0.0",
-		"treqs": "^1.0.0"
+		"python-shell": "^3.0.0"
 	}
 }

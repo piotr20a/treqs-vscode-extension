@@ -2,11 +2,12 @@
 import * as vscode from 'vscode';
 import cp = require('child_process');
 import { HelloWorldPanel } from './webview';
-import { stderr, stdout } from 'process';
 let {PythonShell} = require('python-shell');
-var packageName = 'treqs';
+// var packageName = 'pip install -e .';
 let options = {
-	args: [packageName]
+	// args: [packageName],
+	pythonPath: 'C:\\Users\\Notandi\\AppData\\Local\\Programs\\Python\\Python39\\python.exe',
+	// scriptPath: '..\\..\\..\\Desktop\\treqs-ng'
 }
 export function activate(context: vscode.ExtensionContext) {
 
@@ -14,25 +15,20 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(vscode.commands.registerCommand('treqs.helloWorld', () => {
 		vscode.window.showInformationMessage('Hello World from treqs!', 'delete', 'bye');
-
-
 	}));
 	
 	context.subscriptions.push(vscode.commands.registerCommand('treqs.testCommand', (res) => {
 		console.log(res.path);
-		PythonShell.run('..\\..\\..\\Desktop\\treqs-ng\\setup.py', options,
-		function(err: any, result: string){
+		PythonShell.run('script1.py', undefined, function(err: any, result: any){
 		   if(err) throw err;
-		   else 
 		   console.log("it loaded treqs" + result);
-		   cp.exec('treqs list' + res.path,(err, stdout, stderr) =>{
-			   console.log(err);
-			   console.log(stdout);
-			   console.log(stderr);
-		   });
 		})
+	   cp.exec('treqs list' + res.path,(err, stdout, stderr) =>{
+		console.log(err);
+		console.log(stdout);
+		console.log(stderr);
 	   })
-	);
+}))
 
 	// context.subscriptions.push(vscode.commands.registerCommand('treqs.addOption', () => this.addOption()));
 

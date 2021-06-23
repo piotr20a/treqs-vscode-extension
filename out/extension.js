@@ -4,9 +4,11 @@ exports.deactivate = exports.activate = void 0;
 const vscode = require("vscode");
 const cp = require("child_process");
 let { PythonShell } = require('python-shell');
-var packageName = 'treqs';
+// var packageName = 'pip install -e .';
 let options = {
-    args: [packageName]
+    // args: [packageName],
+    pythonPath: 'C:\\Users\\Notandi\\AppData\\Local\\Programs\\Python\\Python39\\python.exe',
+    // scriptPath: '..\\..\\..\\Desktop\\treqs-ng'
 };
 function activate(context) {
     console.log('Congratulations, your extension "treqs" is now active!');
@@ -15,16 +17,15 @@ function activate(context) {
     }));
     context.subscriptions.push(vscode.commands.registerCommand('treqs.testCommand', (res) => {
         console.log(res.path);
-        PythonShell.run('..\\..\\..\\Desktop\\treqs-ng\\setup.py', options, function (err, result) {
+        PythonShell.run('script1.py', undefined, function (err, result) {
             if (err)
                 throw err;
-            else
-                console.log("it loaded treqs" + result);
-            cp.exec('treqs list' + res.path, (err, stdout, stderr) => {
-                console.log(err);
-                console.log(stdout);
-                console.log(stderr);
-            });
+            console.log("it loaded treqs" + result);
+        });
+        cp.exec('treqs list' + res.path, (err, stdout, stderr) => {
+            console.log(err);
+            console.log(stdout);
+            console.log(stderr);
         });
     }));
     // context.subscriptions.push(vscode.commands.registerCommand('treqs.addOption', () => this.addOption()));
