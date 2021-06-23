@@ -16,7 +16,6 @@
 	],
 	"activationEvents": [
 		"onCommand:treqs.helloWorld",
-		"onCommand:treqs.treqsList",
 		"onCommand:treqs.testCommand"
 	],
 	"main": "./out/extension.js",
@@ -28,11 +27,8 @@
 				"title": "Hello World"
 			},
 			{
-				"command": "treqs.treqsList",
-				"title": "Treqs list elements"
-			},
-			{
 				"command": "treqs.testCommand",
+				"category": "TReqs",
 				"title": "Treqs List"
 			}
 		],
@@ -43,17 +39,18 @@
 		],
 		"menus": {
 			"explorer/context": [
-			  {
-				"when": "resourceScheme == file",
-				"command": "treqs.testCommand",
-				"alt": "treqs.helloWorld",
-				"group": "z_commands"
-			  }
+				{
+					"when": "resourceScheme == file",
+					"command": "treqs.testCommand",
+					"alt": "treqs.helloWorld",
+					"group": "z_commands"
+				}
 			]
-		  }
+		}
 	},
 	"scripts": {
 		"python": "npm install python-shell",
+		"python-treqs": "pip install -e ..\\..\\..\\Desktop\\treqs-ng\\",
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
@@ -73,5 +70,10 @@
 		"mocha": "^8.4.0",
 		"typescript": "^4.3.2",
 		"vscode-test": "^1.5.2"
+	},
+	"dependencies": {
+		"child_process": "^1.0.2",
+		"python-shell": "^3.0.0",
+		"treqs": "^1.0.0"
 	}
 }
