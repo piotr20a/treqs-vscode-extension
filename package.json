@@ -49,8 +49,6 @@
 		}
 	},
 	"scripts": {
-		"python": "npm install python-shell",
-		"python-treqs": "python pip install -e ..\\..\\..\\Desktop\\treqs\\",
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
